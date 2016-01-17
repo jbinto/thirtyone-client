@@ -2,7 +2,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Root from '../src/containers/Root.jsx';
+import Root from '../../src/containers/Root.jsx';
 
 // This is all from http://spencerdixon.com/blog/test-driven-react-tutorial.html
 
