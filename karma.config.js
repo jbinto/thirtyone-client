@@ -16,7 +16,7 @@ module.exports = function(config) {
     frameworks: ['mocha', 'chai'],
 
     // displays tests in a nice readable format
-    reporters: ['spec'],
+    reporters: ['coverage', 'spec'],
 
     // include some polyfills for babel and phantomjs
     files: [
@@ -27,7 +27,8 @@ module.exports = function(config) {
     preprocessors: {
       // these files we want to be precompiled with webpack
       // also run tests throug sourcemap for easier debugging
-      ['./test/**/*.js']: ['webpack', 'sourcemap']
+      ['./test/**/*.js']: ['webpack', 'sourcemap'],
+      ['src/**/*.js']: ['coverage']
     },
     // A lot of people will reuse the same webpack config that they use
     // in development for karma but remove any production plugins like UglifyJS etc.
@@ -45,13 +46,31 @@ module.exports = function(config) {
         // required for enzyme to work properly
         alias: {
           'sinon': 'sinon/pkg/sinon'
-        }
+        },
+
+        isparta: {
+          embedSource: true,
+          noAutoWrap: true,
+          // these babel options will be passed only to isparta and not to babel-loader
+          babel: {
+              presets: ['es2015', 'react']
+          }
+        },
+
       },
       module: {
         // don't run babel-loader through the sinon module
         noParse: [
           /node_modules\/sinon\//
         ],
+        preLoaders: [
+          {
+            test: /\.js$/,
+            include: path.resolve('src/'),
+            loader: 'isparta'
+          }
+        ],
+
         // run babel loader for our tests
         loaders: [
           { test: /\.js?$/, exclude: /node_modules/, loader: 'babel' },
@@ -75,7 +94,17 @@ module.exports = function(config) {
       'karma-webpack',
       'karma-phantomjs-launcher',
       'karma-spec-reporter',
-      'karma-sourcemap-loader'
-    ]
+      'karma-sourcemap-loader',
+      'karma-coverage'
+    ],
+
+    coverageReporter: {
+      // configure the reporter to use isparta for JavaScript coverage
+      // Only on { "karma-coverage": "douglasduteil/karma-coverage#next" }
+      instrumenters: { isparta : require('isparta') },
+      instrumenter: {
+        '**/*.js': 'isparta'
+      }
+    }
   });
 };
