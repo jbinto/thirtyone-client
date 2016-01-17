@@ -13,8 +13,6 @@
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
     "test": "NODE_ENV=test node_modules/.bin/karma start karma.config.js",
     "test:watch": "npm run test -- --watch",
-    "test:mocha": "NODE_ENV=test mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
-    "test:mocha:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
