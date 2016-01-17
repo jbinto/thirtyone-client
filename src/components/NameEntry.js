@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class NameEntry extends Component {
+const propTypes = {
+  onMount: PropTypes.func.isRequired,
+  name: 'Player 1',
+};
+
+class NameEntry extends Component {
   componentDidMount() {
-    console.log('noop');
+    this.props.onMount();
   }
 
   render() {
     return <p>NameEntry</p>;
   }
 }
+
+NameEntry.propTypes = propTypes;
+export default NameEntry;

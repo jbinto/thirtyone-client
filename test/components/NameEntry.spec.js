@@ -1,4 +1,4 @@
-/* globals describe, it, expect */
+/* globals describe, it, expect, sinon */
 import React from 'react';
 import NameEntry from '../../src/components/NameEntry';
 
@@ -24,10 +24,17 @@ describeWithDOM('lifecycle methods', () => {
 
     // Enzyme's `spyLifecycle` shoves spy results onto the component's prototype.
     // `calledOnce` is Sinon syntax.
+
+    // componentDidMount() has to actually be defined on the React component
+    // for this to work.
     expect(
       NameEntry.prototype.componentDidMount.calledOnce
     ).to.be.true();
+  });
 
-
+  it('calls onMount prop once it mounts', () => {
+    const props = { onMount: sinon.spy() };
+    mount(<NameEntry {...props} />);
+    expect(props.onMount.calledOnce).to.be.true();
   });
 });
