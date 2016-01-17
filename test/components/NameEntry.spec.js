@@ -1,6 +1,6 @@
 /* globals describe, it, expect, sinon */
 import React from 'react';
-import NameEntry from '../../src/components/NameEntry';
+import NameEntry from 'components/NameEntry';
 
 import {
   describeWithDOM, // https://github.com/airbnb/enzyme/blob/9d5d3de1c2492f89862c5d3d79f21174ff8e775f/src/index.js#L22
