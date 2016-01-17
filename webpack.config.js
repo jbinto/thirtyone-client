@@ -27,4 +27,7 @@ module.exports = {
   devServer: {
     contentBase: './dist',
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(), // Make hot loading work
+  ]
 };
