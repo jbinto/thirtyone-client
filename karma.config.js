@@ -104,7 +104,11 @@ module.exports = function(config) {
       instrumenters: { isparta : require('isparta') },
       instrumenter: {
         '**/*.js': 'isparta'
-      }
+      },
+      dir: 'coverage',
+      reporters: [
+        { type: 'lcov', subdir: 'report-lcov' }
+      ]
     }
   });
 };
