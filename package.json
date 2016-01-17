@@ -1,0 +1,19 @@
+{
+  "name": "thirtyone-client",
+  "version": "0.0.1",
+  "description": "Web client for web-based 31 card game.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbinto/thirtyone-client.git"
+  },
+  "author": "Jesse Buchanan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbinto/thirtyone-client/issues"
+  },
+  "homepage": "https://github.com/jbinto/thirtyone-client#readme"
+}
