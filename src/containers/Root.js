@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Game from 'components/Game';
+
 
 export default class Root extends Component {
   render() {
@@ -9,6 +11,7 @@ export default class Root extends Component {
     return (
       <div style={style}>
         <h1 className="welcome-message">welcome to 31</h1>
+        <Game />
       </div>
     );
   }

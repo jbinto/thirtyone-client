@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import Root from 'containers/Root';
 
+
 // This is all from http://spencerdixon.com/blog/test-driven-react-tutorial.html
 
 describe('(Container) Root', () => {

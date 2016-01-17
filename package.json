@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
     "test": "NODE_ENV=test node_modules/.bin/karma start karma.config.js",
-    "test:watch": "npm run test -- --watch",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",

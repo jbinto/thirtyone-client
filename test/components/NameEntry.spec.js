@@ -1,6 +1,7 @@
 /* globals describe, it, expect, sinon */
 import React from 'react';
 import NameEntry from 'components/NameEntry';
+import sinon from 'sinon';
 
 import {
   describeWithDOM, // https://github.com/airbnb/enzyme/blob/9d5d3de1c2492f89862c5d3d79f21174ff8e775f/src/index.js#L22
@@ -29,12 +30,12 @@ describeWithDOM('lifecycle methods', () => {
     // for this to work.
     expect(
       NameEntry.prototype.componentDidMount.calledOnce
-    ).to.be.true();
+    ).to.be.true;
   });
 
   it('calls onMount prop once it mounts', () => {
     const props = { onMount: sinon.spy() };
     mount(<NameEntry {...props} />);
-    expect(props.onMount.calledOnce).to.be.true();
+    expect(props.onMount.calledOnce).to.be.true;
   });
 });
