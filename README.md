@@ -13,3 +13,10 @@ Client 0% complete
 ## Usage
 
 TODO
+
+## Attributions
+
+Code adapted from:
+
+* [Full-Stack Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html) by Tero Parviainen
+* [Test Driven React Tutorial](http://spencerdixon.com/blog/test-driven-react-tutorial.html) by Spencer Dixon
