@@ -6,17 +6,15 @@ var path = require('path');
 
 module.exports = function(config) {
   config.set({
-    // only use PhantomJS for our 'test' browser
-    // browsers: ['PhantomJS'],
-    browsers: ['Chrome'],
+    browsers:  process.env.TRAVIS
+      ? ['ChromeTravis']
+      : ['Chrome'],
 
-    // just run once by default unless --watch flag is passed
-    singleRun: !argv.watch,
+    colors: true,
+    autoWatch: process.env.TRAVIS ? false : true,
+    singleRun: process.env.TRAVIS ? true : false,
 
-    // which karma frameworks do we want integrated
     frameworks: ['mocha', 'chai'],
-
-    // displays tests in a nice readable format
     reporters: ['coverage', 'spec'],
 
     // include some polyfills for babel and phantomjs
@@ -111,6 +109,13 @@ module.exports = function(config) {
       reporters: [
         { type: 'lcov', subdir: 'report-lcov' }
       ]
+    },
+
+    customLaunchers: {
+      ChromeTravis: {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+      }
     }
   });
 };
