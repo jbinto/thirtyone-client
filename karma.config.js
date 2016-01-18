@@ -7,7 +7,8 @@ var path = require('path');
 module.exports = function(config) {
   config.set({
     // only use PhantomJS for our 'test' browser
-    browsers: ['PhantomJS'],
+    // browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     // just run once by default unless --watch flag is passed
     singleRun: !argv.watch,
@@ -95,7 +96,8 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-spec-reporter',
       'karma-sourcemap-loader',
-      'karma-coverage'
+      'karma-coverage',
+      'karma-chrome-launcher'
     ],
 
     coverageReporter: {
