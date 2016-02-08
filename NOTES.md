@@ -1,3 +1,43 @@
+# 2016-02-06 14:24
+
+Need to spend some time thinking about which are Components and which are Containers.
+
+NameEntry is definitely a component:
+
+```js
+class NameEntry extends React.Component {
+    handleSetName() {
+       console.log(`Your name is ${this.refs.name.value}`);
+    }
+
+    render() {
+        return (
+          <div>
+            <input type="text" ref="name" />
+            <button onClick={this.handleSetName.bind(this)}>Set name</button>
+          </div>
+        );
+    }
+}
+```
+
+Does `NameEntry` need it's own container? In the Redux Egghead tutorials, the distinction of container v. component is a little more subtle than "always render from the top". There is awareness of Redux at multiple levels, e.g.
+
+Or can `GameContainer` be a sort of god object?
+
+I think that's the way to go for now until a refactor makes an alternate strategy obvious.
+
+---
+
+Sample tests:
+
+* <NameEntry> renders a textbox
+* <NameEntry> renders a button
+* <NameEntry> calls the callback in this.props.onSetName when button is clicked
+* <NameEntry> renders with an error if name.length isn't 2 < x < 50
+  (e.g. this would be a setState call)
+
+
 # 2016-01-31 16:07
 
 Actions:
