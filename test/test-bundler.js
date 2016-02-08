@@ -12,5 +12,5 @@ global.should = chai.should();
 const testsContext = require.context('../test', true, /spec\.js$/);
 testsContext.keys().forEach(testsContext);
 
-// const sourceContext = require.context('../src', true, /^((?!app).)*\.js$/);
-// sourceContext.keys().forEach(sourceContext);
+const sourceContext = require.context('../src', true, /^((?!app).)*\.js$/);
+sourceContext.keys().forEach(sourceContext);

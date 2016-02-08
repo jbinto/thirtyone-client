@@ -9,11 +9,11 @@ module.exports = {
       // /node_modules\/acorn\//,
     ],
     preLoaders: [
-      { test: /\.jsx$/, loader: 'isparta', include: path.resolve('../src/') },
+      { test: /\.jsx?$/, loader: 'isparta', exclude: /(test|node_modules)/ },
+      { test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/ },
     ],
     loaders: [
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/ },
       { test: /\.json$/, loader: 'json-loader' },
     ],
   },
