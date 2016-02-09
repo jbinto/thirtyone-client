@@ -6,12 +6,11 @@ const propTypes = {
 };
 
 class NameEntry extends Component {
-  componentDidMount() {
-    this.props.onMount();
-  }
-
   render() {
-    return <p>NameEntry</p>;
+    return (<div>
+      <input type="text" />
+      <button>Set name</button>
+    </div>);
   }
 }
 
