@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 const propTypes = {
-  onMount: PropTypes.func.isRequired,
-  name: 'Player 1',
+  onSetName: PropTypes.func.isRequired,
 };
 
 class NameEntry extends Component {
@@ -12,7 +11,7 @@ class NameEntry extends Component {
   }
 
   handleSetName() {
-    const name = this.refs.name;
+    const name = this.refs.name.value;
     const onSetName = this.props.onSetName;
     onSetName(name);
   }
