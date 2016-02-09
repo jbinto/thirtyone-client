@@ -16,7 +16,9 @@ describe('<Game />', () => {
   describe('state="WAITING_FOR_PLAYERS_OR_START_GAME"', () => {
     it('renders <NameEntry> if player is not set', () => {
       const wrapper = shallow(<Game gameState="WAITING_FOR_PLAYERS_OR_START_GAME" />);
-      expect(wrapper.find(NameEntry)).to.have.length(1);
+
+      // chai-enzyme style assertion:
+      expect(wrapper).to.contain(<NameEntry />);
     });
   });
 
