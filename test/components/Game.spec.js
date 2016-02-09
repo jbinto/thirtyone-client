@@ -21,5 +21,4 @@ describe('<Game />', () => {
       expect(wrapper).to.contain(<NameEntry />);
     });
   });
-
 });

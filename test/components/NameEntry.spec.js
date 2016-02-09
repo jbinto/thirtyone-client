@@ -1,4 +1,6 @@
 /* globals describe, it, expect, sinon */
+/* eslint-disable no-unused-expressions */
+
 import React from 'react';
 import NameEntry from 'components/NameEntry';
 import sinon from 'sinon';
@@ -6,7 +8,6 @@ import sinon from 'sinon';
 import {
   describeWithDOM, // https://github.com/airbnb/enzyme/blob/9d5d3de1c2492f89862c5d3d79f21174ff8e775f/src/index.js#L22
   mount,  // as opposed to 'shallow'
-  shallow,
   spyLifecycle,  // toggle `sinon` spy on React lifecycle hooks
 } from 'enzyme';
 
@@ -18,7 +19,7 @@ describeWithDOM('lifecycle methods', () => {
 
     const props = {
       onMount: () => {}, // noop
-      name: 'Player 1'
+      name: 'Player 1',
     };
 
     mount(<NameEntry {...props} />);

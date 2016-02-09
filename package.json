@@ -13,7 +13,7 @@
     "dev": "webpack-dev-server --config build/webpack.config.dev.js --port 3000 --devtool eval --progress --colors --hot --content-base dist",
     "test": "NODE_ENV=test npm run lint && karma start test/karma.config.js",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint .",
+    "lint": "eslint . || true",
     "coveralls": "cat ./coverage/report-lcov/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {

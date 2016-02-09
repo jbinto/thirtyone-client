@@ -1,5 +1,4 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -19,7 +18,7 @@ module.exports = {
   resolve: {
     modulesDirectories: [
       'src',
-      'node_modules'
+      'node_modules',
     ],
     extensions: ['', '.js', '.jsx', '.json'],
     alias: {
