@@ -10,7 +10,6 @@ module.exports = {
     ],
     preLoaders: [
       { test: /\.jsx?$/, loader: 'isparta', exclude: /(test|node_modules)/ },
-      { test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/ },
     ],
     loaders: [
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
