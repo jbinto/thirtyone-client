@@ -1,4 +1,6 @@
 const webpackConfig = require('../build/webpack.config.test');
+const argv = require('yargs').argv;
+
 
 module.exports = (config) => {
   config.set({
@@ -8,8 +10,7 @@ module.exports = (config) => {
       ? ['ChromeTravis']
       : ['Chrome'],
 
-    autoWatch: false,
-    singleRun: true,
+    singleRun: !argv.watch,
 
     files: [
       {

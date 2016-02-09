@@ -6,10 +6,21 @@ const propTypes = {
 };
 
 class NameEntry extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSetName = this.handleSetName.bind(this);
+  }
+
+  handleSetName() {
+    const name = this.refs.name;
+    const onSetName = this.props.onSetName;
+    onSetName(name);
+  }
+
   render() {
     return (<div>
-      <input type="text" />
-      <button>Set name</button>
+      <input type="text" ref="name" />
+      <button onClick={this.handleSetName}>Set name</button>
     </div>);
   }
 }
