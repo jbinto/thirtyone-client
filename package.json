@@ -2,7 +2,7 @@
   "name": "thirtyone-client",
   "version": "0.0.1",
   "description": "Web client for web-based 31 card game.",
-  "main": "index.js",
+  "main": "src/index.js",
   "eslintConfig": {
     "extends": "airbnb",
     "plugins": [
