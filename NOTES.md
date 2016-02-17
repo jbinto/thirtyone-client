@@ -1,3 +1,28 @@
+# 2016-02-08 21:32
+
+Okay, so <NameEntry> is complete, TDD style.
+
+What's next?
+
+* TDD the reducer, which for now, is basically just SET_STATE_FROM_SERVER (right?)
+* TDD GameContainer#handleSetName: it should dispatch.. SET_NAME (marked meta:remote:true, handled by middleware)
+
+----
+
+Hmm, realizing something here...
+
+There are the remote actions (which are handled by middleware, not a reducer) and then there's SET_STATE_FROM_SERVER
+
+There's very little to worry about client side! (I guess that could change in the future. Any client-side only data would be handled by a reducer. Trivial example: color/font size settings, a cache of chat messages, sound settings, etc.)
+
+It makes the use of redux seem kind of silly, but let's go along with it.
+
+Aside: If the server were architected differently, there'd be more to do: right now the server just dumps the entire updated game state to the client. We're only talking like 200-400 bytes here. If things were different (300 baud modem, 500,000 object state tree) then we'd only send deltas, and have to reconcile them here. That'd be over engineering for this (even more so than it already is).
+
+---
+
+
+
 # 2016-02-06 14:24
 
 Need to spend some time thinking about which are Components and which are Containers.
