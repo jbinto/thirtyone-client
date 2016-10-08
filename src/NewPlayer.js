@@ -5,7 +5,9 @@ export default class NewPlayer extends React.Component {
     this.setState({ name: e.target.value })
   }
 
-  onClick() {
+  onSubmit(e) {
+    e.preventDefault()
+
     const name = this.state.name
     const onSubmit = this.props.onSubmit
 
@@ -16,16 +18,17 @@ export default class NewPlayer extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>
-          <input
-            onChange={this.onChange.bind(this)}
-            placeholder="enter your name here :)"
-          />
-          <button type="button" onClick={this.onClick.bind(this)}>
-            go
-          </button>
-        </label>
+      <div className="newPlayer">
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <label>
+            <input
+              autoFocus={true}
+              onChange={this.onChange.bind(this)}
+              placeholder="enter your name here :)"
+            />
+            <button>go</button>
+          </label>
+        </form>
       </div>
     )
   }

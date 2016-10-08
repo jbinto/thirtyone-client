@@ -30,7 +30,6 @@ const store = createStoreWithMiddleware(reducers,
 )
 
 socket.on('state', state => {
-  console.log('SOCKET state', state)
   store.dispatch(setGameState(state))
 })
 

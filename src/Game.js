@@ -2,10 +2,11 @@ import React from 'react'
 import _ from 'lodash'
 
 import { connect } from 'react-redux'
-import { addPlayer, playerJoined } from './action_creators'
+import { addPlayer, setPlayerJoined } from './action_creators'
 // import './Game.css'
 
-import NewPlayer from './NewPlayer'
+import Pregame from './Pregame'
+import GameAbandoned from './GameAbandoned'
 
 
 const Players = ({ players = [] }) => {
@@ -19,19 +20,13 @@ const Players = ({ players = [] }) => {
   )
 }
 
-const Game = ({ gameState, showNewPlayer, players, dispatch }) => {
+const Game = ({ gameState, playerJoined, players, dispatch }) => {
   const componentForGameState = (gameState) => {
     switch (gameState) {
       case 'WAITING_FOR_NEW_PLAYERS_OR_START_GAME':
-        if (showNewPlayer) {
-          // TODO extract action creator etc.)
-          const onSubmit = (playerName) => {
-            dispatch(addPlayer(playerName))
-            dispatch(playerJoined())
-          }
-          return <NewPlayer onSubmit={onSubmit} />
-        }
-        return <p>Welcome!</p>
+        return <Pregame />
+      case 'GAME_ABANDONED':
+        return <GameAbandoned />
       default:
         return <p>FATAL: Unknown game state {gameState}!</p>
     }
@@ -40,8 +35,8 @@ const Game = ({ gameState, showNewPlayer, players, dispatch }) => {
 
 
   return (
-    <div>
-      <p>Game state: {gameState}</p>
+    <div className="game">
+      <p className="debug">Game state: {gameState}</p>
       <Players players={players} />
       {componentForGameState(gameState)}
     </div>
@@ -52,7 +47,7 @@ const mapStateToProps = ({ local, remote }) => {
   return {
     gameState: remote.get('gameState'),
     players: remote.get('players'),
-    showNewPlayer: !local.get('playerJoined'),
+    playerJoined: local.get('playerJoined'),
   }
 }
 

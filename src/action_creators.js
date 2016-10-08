@@ -3,7 +3,7 @@ export const setGameState = (gameState) => ({
   state: gameState,
 })
 
-export const playerJoined = () => ({ type: 'PLAYER_JOINED' })
+export const setPlayerJoined = () => ({ type: 'PLAYER_JOINED' })
 
 
 // TODO: action creators for join game, draw, knock, etc.
