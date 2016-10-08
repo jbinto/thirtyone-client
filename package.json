@@ -2,6 +2,9 @@
   "name": "thirtyone-client",
   "version": "0.1.0",
   "private": true,
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "devDependencies": {
     "react-scripts": "0.6.1"
   },
