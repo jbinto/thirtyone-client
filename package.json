@@ -3,14 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ]
+    }
   },
   "devDependencies": {
     "react-scripts": "0.6.1"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "socket.io-client": "^1.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
