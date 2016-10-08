@@ -7,7 +7,9 @@ import io from 'socket.io-client'
 
 import './index.css'
 import App from './App'
-import { setGameState } from './action_creators'
+import {
+  setGameState
+} from './action_creators'
 import remoteActionMiddleware from './remote_action_middleware'
 import reducer from './reducer'
 

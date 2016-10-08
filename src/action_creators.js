@@ -4,3 +4,13 @@ export const setGameState = (gameState) => ({
 })
 
 // TODO: action creators for join game, draw, knock, etc.
+
+
+
+// Remote actions, via remote_action_middleware
+const remote = (action) => ({ ...action, meta: { remote: true } })
+
+export const addPlayer = (player) => remote({
+  type: 'ADD_PLAYER',
+  player,
+})
