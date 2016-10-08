@@ -28,6 +28,8 @@ socket.on('state', state => {
   store.dispatch(setGameState(state))
 })
 
+socket.on('hello', message => console.log(message))
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
