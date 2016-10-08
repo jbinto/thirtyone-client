@@ -1,7 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import _ from 'lodash'
 
-import { addPlayer } from './action_creators'
+import { connect } from 'react-redux'
+import { addPlayer, playerJoined } from './action_creators'
 // import './Game.css'
 
 import NewPlayer from './NewPlayer'
@@ -18,16 +19,19 @@ const Players = ({ players = [] }) => {
   )
 }
 
-
-const Game = ({ gameState, players, dispatch }) => {
+const Game = ({ gameState, showNewPlayer, players, dispatch }) => {
   const componentForGameState = (gameState) => {
     switch (gameState) {
       case 'WAITING_FOR_NEW_PLAYERS_OR_START_GAME':
-        const onSubmit = (playerName) => {
-          // TODO extract action creator etc.
-          dispatch(addPlayer(playerName))
+        if (showNewPlayer) {
+          // TODO extract action creator etc.)
+          const onSubmit = (playerName) => {
+            dispatch(addPlayer(playerName))
+            dispatch(playerJoined())
+          }
+          return <NewPlayer onSubmit={onSubmit} />
         }
-        return <NewPlayer onSubmit={onSubmit} />
+        return <p>Welcome!</p>
       default:
         return <p>FATAL: Unknown game state {gameState}!</p>
     }
@@ -44,10 +48,13 @@ const Game = ({ gameState, players, dispatch }) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  gameState: state.get('gameState'),
-  players: state.get('players')
-})
+const mapStateToProps = ({ local, remote }) => {
+  return {
+    gameState: remote.get('gameState'),
+    players: remote.get('players'),
+    showNewPlayer: !local.get('playerJoined'),
+  }
+}
 
 export default connect(
   mapStateToProps

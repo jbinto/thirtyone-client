@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
 import io from 'socket.io-client'
@@ -11,15 +11,21 @@ import {
   setGameState
 } from './action_creators'
 import remoteActionMiddleware from './remote_action_middleware'
-import reducer from './reducer'
+import remoteReducer from './remote_reducer'
+import localReducer from './local_reducer'
 
 const socket = io.connect('http://localhost:8090')
+
+const reducers = combineReducers({
+  remote: remoteReducer,
+  local: localReducer,
+})
 
 const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
 )(createStore)
 
-const store = createStoreWithMiddleware(reducer,
+const store = createStoreWithMiddleware(reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
