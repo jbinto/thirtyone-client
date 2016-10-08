@@ -2,12 +2,9 @@ import React from 'react'
 import _ from 'lodash'
 
 import { connect } from 'react-redux'
-import { addPlayer, setPlayerJoined } from './action_creators'
-// import './Game.css'
 
 import Pregame from './Pregame'
 import GameAbandoned from './GameAbandoned'
-
 
 const Players = ({ players = [] }) => {
   return (
@@ -20,7 +17,7 @@ const Players = ({ players = [] }) => {
   )
 }
 
-const Game = ({ gameState, playerJoined, players, dispatch }) => {
+const Game = ({ gameState, players, dispatch }) => {
   const componentForGameState = (gameState) => {
     switch (gameState) {
       case 'WAITING_FOR_NEW_PLAYERS_OR_START_GAME':
@@ -30,9 +27,7 @@ const Game = ({ gameState, playerJoined, players, dispatch }) => {
       default:
         return <p>FATAL: Unknown game state {gameState}!</p>
     }
-
   }
-
 
   return (
     <div className="game">
@@ -47,7 +42,6 @@ const mapStateToProps = ({ local, remote }) => {
   return {
     gameState: remote.get('gameState'),
     players: remote.get('players'),
-    playerJoined: local.get('playerJoined'),
   }
 }
 

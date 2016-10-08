@@ -2,7 +2,11 @@ import React from 'react'
 import _ from 'lodash'
 
 import { connect } from 'react-redux'
-import { addPlayer, setPlayerJoined } from './action_creators'
+import {
+  addPlayer,
+  setPlayerJoined,
+  startGame,
+} from './action_creators'
 
 import NewPlayer from './NewPlayer'
 
@@ -19,7 +23,8 @@ const Pregame = ({ playerJoined, dispatch, enoughPlayers }) => {
     return <NewPlayer onSubmit={onSubmit} />
   }
   if (showStartButton) {
-    return <p>2 players, ready to start game!!</p>
+    const onClick = () => { dispatch(startGame()) }
+    return <button onClick={onClick}>Start Game</button>
   }
 
   return <p>Please wait for another player to join.</p>
