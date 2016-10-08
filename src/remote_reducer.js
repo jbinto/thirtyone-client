@@ -1,15 +1,13 @@
-import { Map } from 'immutable'
+import { Map, fromJS } from 'immutable'
 
-const setState = (state, newState) => {
-  return state.merge(newState)
-}
+// const setState = (state, newState) => {
+//   return state.merge(newState)
+// }
 
 export default (state = Map(), action) => {
-  console.log(`reducer action=${JSON.stringify(action)} state=${state}`)
-
   switch (action.type) {
     case 'SET_GAME_STATE':
-      return setState(state, action.state)
+      return fromJS(action.state)
     default:
       return state
   }
