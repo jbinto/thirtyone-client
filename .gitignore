@@ -1,4 +1,15 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
 node_modules
-.coveralls.yml
+
+# testing
 coverage
-dist/31-bundle.js
+
+# production
+build
+
+# misc
+.DS_Store
+.env
+npm-debug.log
