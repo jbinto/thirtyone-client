@@ -4,7 +4,9 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import Pregame from './Pregame'
+import Deal from './Deal'
 import GameAbandoned from './GameAbandoned'
+import Hand from './Hand'
 
 const Players = ({ players = [] }) => {
   return (
@@ -22,8 +24,12 @@ const Game = ({ gameState, players, dispatch }) => {
     switch (gameState) {
       case 'WAITING_FOR_NEW_PLAYERS_OR_START_GAME':
         return <Pregame />
+      case 'WAITING_FOR_DEAL':
+        return <Deal />
       case 'GAME_ABANDONED':
         return <GameAbandoned />
+      case 'WAITING_FOR_PLAYER_TO_DRAW_OR_KNOCK':
+        return <Hand />
       default:
         return <p>FATAL: Unknown game state {gameState}!</p>
     }

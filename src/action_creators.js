@@ -13,3 +13,4 @@ export const addPlayer = (player) => remote({
 })
 
 export const startGame = () => remote({ type: 'START_GAME' })
+export const startNewHand = () => remote({ type: 'START_NEW_HAND' })
