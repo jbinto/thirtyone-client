@@ -3,10 +3,14 @@
 body {
   background-color: #001f3f;
   color: #AAAAAA;
+  /*text-align: center;*/
 }
 
 .game {
-  padding: 1.5em
+  padding: 1.5em;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .debug {
@@ -14,12 +18,19 @@ body {
   padding: 0.75em;
   background-color: #dddddd;
   color: #111111;
+  opacity: 0.5;
   font-weight: bold;
   font-size: 0.75em;
+  width: 50em;
+  display: inline-block;
 }
 
-.newPlayer input, .newPlayer button {
+input, button {
   font-size: 3em;
+}
+
+button::hover {
+  background-color: white
 }
 
 .gameAbandoned {
